@@ -1,0 +1,20 @@
+name: Context Testing
+on: push
+
+jobs:
+  dump_context_to_logs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Dump github contexts
+        id: github_context_steps
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+      - name: Dump matrix context
+        run: echo '${{ toJSON(matrix) }}'
